@@ -1,0 +1,89 @@
+class Set:
+    def __init__(self):
+        self.set_a = set()
+        self.set_b = set()
+        self.union_set = set()
+        self.intersection_set = set()
+        self.difference_set = set()
+
+    def add(self):
+        choice = input("In which set do you want to add an element (A/B): ")
+        element = int(input("Enter the element: "))
+        if choice.upper() == 'A':
+            self.set_a.add(element)
+            print("Element inserted into Set A.")
+        elif choice.upper() == 'B':
+            self.set_b.add(element)
+            print("Element inserted into Set B.")
+        else:
+            print("Invalid set choice.")
+
+    def delete_element(self, key):
+        if key in self.set_a or key in self.set_b:
+            self.set_a.discard(key)
+            self.set_b.discard(key)
+            print("Element deleted.")
+        else:
+            print("Element not found in the sets.")
+
+    def search(self, key):
+        if key in self.set_a or key in self.set_b:
+            print("The element is present.")
+        else:
+            print("The element is not present.")
+
+    def display(self):
+        print("Elements in Set A:", self.set_a)
+        print("Elements in Set B:", self.set_b)
+
+    def calculate_union(self):
+        self.union_set = self.set_a.union(self.set_b)
+        print("Union set of Set A and Set B:", self.union_set)
+
+    def calculate_intersection(self):
+        self.intersection_set = self.set_a.intersection(self.set_b)
+        print("Intersection set of Set A and Set B:", self.intersection_set)
+
+    def calculate_difference(self):
+        self.difference_set = self.set_a.difference(self.set_b)
+        print("Difference set of Set A and Set B:", self.difference_set)
+
+
+s = Set()
+
+while True:
+    print("\n-----------------------------")
+    print("Set Theory")
+    print("-----------------------------")
+    print("1. Add element")
+    print("2. Delete element")
+    print("3. Search element")
+    print("4. Display sets")
+    print("5. Calculate union")
+    print("6. Calculate intersection")
+    print("7. Calculate difference")
+    print("8. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        s.add()
+    elif choice == 2:
+        key = int(input("Enter the element to be deleted: "))
+        s.delete_element(key)
+    elif choice == 3:
+        key = int(input("Enter the element to be searched: "))
+        s.search(key)
+    elif choice == 4:
+        s.display()
+    elif choice == 5:
+        s.calculate_union()
+    elif choice == 6:
+        s.calculate_intersection()
+    elif choice == 7:
+        s.calculate_difference()
+    elif choice == 8:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice.")
